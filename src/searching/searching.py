@@ -30,14 +30,11 @@ def agnostic_binary_search(arr, target, start=0, end=None):
         return mid
     if ascending:
         if arr[mid] < target:
-            return agnostic_binary_search(arr, target, start=mid+1)
+            return agnostic_binary_search(arr, target, mid+1, end)
         else:
-            return agnostic_binary_search(arr, target, end=mid-1)
+            return agnostic_binary_search(arr, target, start, mid-1)
     else:
         if arr[mid] < target:
-            return agnostic_binary_search(arr, target, end=mid-1)
+            return agnostic_binary_search(arr, target, start, mid-1)
         else:
-            return agnostic_binary_search(arr, target, start=mid+1)
-
-ascending = [2, 4, 12, 14, 17, 30, 46, 47, 51, 54, 61]
-agnostic_binary_search(ascending, 31)
+            return agnostic_binary_search(arr, target, mid+1, end)
